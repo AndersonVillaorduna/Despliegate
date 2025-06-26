@@ -1,7 +1,7 @@
-from app.database import conectar
+from app.database import conectar_db
 
 def findByUserName(username):
-    conexion = conectar()
+    conexion = conectar_db()
     if not conexion:
         return None
     try:
@@ -12,7 +12,7 @@ def findByUserName(username):
         conexion.close()
 
 def findById(admin_id):
-    conexion = conectar()
+    conexion = conectar_db()
     if not conexion:
         return None
     try:
@@ -23,7 +23,7 @@ def findById(admin_id):
         conexion.close()
 
 def create(id, username, email, password):
-    conexion = conectar()
+    conexion = conectar_db()
     try:
         userExist = findByUserName(username)
         if userExist:
@@ -36,7 +36,7 @@ def create(id, username, email, password):
         conexion.close()
 
 def update(admin_id, username, email, password):
-    conexion = conectar()
+    conexion = conectar_db()
     try:
         cursor = conexion.cursor()
         cursor.execute("""
@@ -48,7 +48,7 @@ def update(admin_id, username, email, password):
         conexion.close()
 
 def delete(admin_id):
-    conexion = conectar()
+    conexion = conectar_db()
     try:
         cursor = conexion.cursor()
         cursor.execute("DELETE FROM admin WHERE id = %s", (admin_id,))
@@ -59,7 +59,7 @@ def delete(admin_id):
 
 
 def resetPassword(username, email, password):
-    conexion = conectar()
+    conexion = conectar_db()
     try:
         cursor = conexion.cursor()
         cursor.execute("""
