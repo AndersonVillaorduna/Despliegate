@@ -42,5 +42,6 @@ app.register_blueprint(login_bp, url_prefix='/api')
 app.register_blueprint(perfil_bp, url_prefix='/api')
 app.register_blueprint(pregunta_bp, url_prefix='/api')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Render usa PORT
+    app.run(host="0.0.0.0", port=port)
