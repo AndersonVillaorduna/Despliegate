@@ -1,4 +1,4 @@
-from app.database import conectar_db
+from mini_db.conexion import conectar_db
 
 def findByUserName(username):
     conexion = conectar_db()
